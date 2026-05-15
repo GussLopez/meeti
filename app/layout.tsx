@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import { GeneratePageTitle } from "@/src/shared/utils/metadata";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -9,7 +10,7 @@ const outfit = Outfit({
 
 
 export const metadata: Metadata = {
-  title: "Meeti - Next",
+  title: GeneratePageTitle('Next'),
   description: "Proyecto Meeti Next.js on DrizzleORM",
 };
 
