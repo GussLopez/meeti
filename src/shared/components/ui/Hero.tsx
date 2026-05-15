@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-  <section className="bg-[url(/hero.jpg)] flex justify-center items-center">
+  <section className="h-150 bg-cover flex justify-center items-center bg-[url(/hero.jpg)]">
     <div className="flex flex-col justify-center items-center max-w-2xl">
       <h1 className="text-3xl lg:text-4xl text-white uppercase font-black text-center">Encuentra Un Meeti o Crea una Comunidad para
         compartir lo que más te gusta</h1>
