@@ -5,7 +5,8 @@ import { SignUpSchema } from "../schemas/authSchema";
 
 export default function RegisterForm() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
-    resolver: zodResolver(SignUpSchema)
+    resolver: zodResolver(SignUpSchema),
+    mode: 'onSubmit'
   });
 
   const onSubmit = () => {
@@ -30,7 +31,7 @@ export default function RegisterForm() {
         {...register('email')}
       />
       {errors.email && <FormError>{errors.email.message}</FormError>}
-      
+
       <FormLabel htmlFor="password">Password</FormLabel>
       <FormInput
         id="password"
@@ -39,7 +40,7 @@ export default function RegisterForm() {
         {...register('password')}
       />
       {errors.password && <FormError>{errors.password.message}</FormError>}
-      
+
       <FormLabel htmlFor="password_confirmation">Repetir Password</FormLabel>
       <FormInput
         id="password_confirmation"
@@ -47,6 +48,7 @@ export default function RegisterForm() {
         placeholder="Repite tu Password"
         {...register('passwordConfirmation')}
       />
+      {errors.passwordConfirmation && <FormError>{errors.passwordConfirmation.message}</FormError>}
 
       <FormSubmit value='Registrarme' />
     </Form>
