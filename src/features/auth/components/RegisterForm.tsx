@@ -1,15 +1,15 @@
 import { Form, FormError, FormInput, FormLabel, FormSubmit } from "@/components/forms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { SignUpSchema } from "../schemas/authSchema";
+import { SignInInput, SignUpSchema } from "../schemas/authSchema";
 
 export default function RegisterForm() {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(SignUpSchema),
     mode: 'onSubmit'
   });
 
-  const onSubmit = () => {
+  const onSubmit = (data: SignInInput) => {
 
   }
   return (
