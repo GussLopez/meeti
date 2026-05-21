@@ -1,7 +1,10 @@
+'use client'
+
 import { Form, FormError, FormInput, FormLabel, FormSubmit } from "@/components/forms";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { SignInInput, SignUpSchema } from "../schemas/authSchema";
+import { SignUpInput, SignUpSchema } from "../schemas/authSchema";
+import { SignUpAction } from "../actions/auth-actions";
 
 export default function RegisterForm() {
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -9,8 +12,8 @@ export default function RegisterForm() {
     mode: 'onSubmit'
   });
 
-  const onSubmit = (data: SignInInput) => {
-
+  const onSubmit = async (data: SignUpInput) => {
+    await SignUpAction(data);
   }
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
