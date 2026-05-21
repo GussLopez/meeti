@@ -3,7 +3,9 @@ import { SignUpInput } from "../schemas/authSchema";
 class AuthService {
   
   async register(credentials: SignUpInput) {
-    console.log('CREDENTIALS: ', credentials);
+     const { name, email, password } = credentials;
+
+     
   }
 
 }
