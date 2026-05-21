@@ -17,4 +17,4 @@ export const SignUpSchema = BaseAuthSchema.pick({
   path: ['passwordConfirmation']
 })
 
-export type SignInInput = z.infer<typeof SignUpSchema>
+export type SignUpInput = z.infer<typeof SignUpSchema>
