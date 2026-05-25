@@ -16,3 +16,16 @@ export async function SignUpAction(input: SignUpInput) {
   const response = await authService.register(data.data);
   return response
 }
+
+export async function SignInAction(input: SignInInput) {
+  const data = SignInSchema.safeParse(input);
+  if (!data.success) {
+    return {
+      error: 'Hubo un error',
+      success: '',
+    }
+  }
+
+  const response = await authService.login(data.data);
+  return response;
+}
