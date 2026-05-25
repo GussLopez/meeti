@@ -12,4 +12,4 @@ export const auth = betterAuth({
     enabled: true
   },
   plugins: [nextCookies()]
-})
+});
