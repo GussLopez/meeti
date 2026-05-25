@@ -1,6 +1,15 @@
-export default function DashboardPage() {
+import { requiredAuth } from "@/src/lib/auth-server";
+import Heading from "@/src/shared/components/typography/Heading";
+import { redirect } from "next/navigation";
 
+export default async function DashboardPage() {
+
+  const { isAuth } = await requiredAuth();
+  if (isAuth) redirect('/auth/login');
+  
   return (
-    <div>dashboard</div>
+    <>
+    <Heading>Panel de Administración</Heading>
+    </>
   )
 }
