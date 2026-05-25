@@ -10,8 +10,13 @@ class AuthService {
   async register(credentials: SignUpInput) {
     const { name, email, password } = credentials;
 
-    await this.authRepository.userExist(email)
-
+    const user = await this.authRepository.userExist(email);
+    if (user) {
+      return {
+        error: 'Este e-mail ya esta registrado',
+        success: ''
+      }
+    }
     await auth.api.signUpEmail({
       body: {
         name,
