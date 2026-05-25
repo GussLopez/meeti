@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 export default async function DashboardPage() {
 
   const { isAuth } = await requiredAuth();
-  if (isAuth) redirect('/auth/login');
+  if (!isAuth) redirect('/auth/login');
   
   return (
     <>
