@@ -59,7 +59,8 @@ class AuthService {
     } catch (error) {
       if (error instanceof APIError) {
         const messages: Record<number, string> = {
-          401: 'Password Incorrecto'
+          401: 'Password Incorrecto',
+          403: 'Tu cuenta no ha sido confirmada, hemos enviado un email'
         };
 
         const errorMessage = messages[error.statusCode];
