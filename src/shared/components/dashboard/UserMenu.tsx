@@ -1,5 +1,8 @@
+import { signOut } from "@/lib/auth-client"
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react"
 import { Bars3Icon } from "@heroicons/react/24/outline"
+import Link from "next/link"
+import { redirect } from "next/navigation"
 
 export default function UserMenu() {
 
@@ -24,24 +27,33 @@ export default function UserMenu() {
           </a>
         </MenuItem>
         <MenuItem>
-          <a
+          <Link
             href="/dashboard/profile"
             className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
           >
             Administra tu Perfil
-          </a>
+          </Link>
         </MenuItem>
         <MenuItem>
-          <a
+          <Link
             href="/dashboard/security"
             className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
           >
             Seguridad
-          </a>
+          </Link>
         </MenuItem>
         <MenuItem>
           <button
             className="block w-full text-left px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+            onClick={async () => {
+              await signOut({
+                fetchOptions: {
+                  onSuccess: () => {
+                    redirect('/auth/login');
+                  }
+                }
+              });
+            }}
           >
             Cerrar Sesión
           </button>
